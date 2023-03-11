@@ -12,13 +12,15 @@ fn main() {
     let word = std::env::args().nth(1);
 
     if word.is_none() {
-        panic!("board must be provided");
+        println!("Usage: boggle <board>");
+        std::process::exit(1);
     }
 
     let word = word.unwrap();
 
     if word.len() != 16 {
-        panic!("board must be 16 characters");
+        println!("Board must be 16 characters long");
+        std::process::exit(1);
     }
 
     let board = board::Board::new_from_string(word.as_str());
